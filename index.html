@@ -53,7 +53,7 @@
                 <div class="transaction-form">
                     <h5>Deposit</h5>
                     <input type="text" class="form-control" placeholder="$amount to Deposit" id="deposit_input">
-                    <button class="btn btn-success" id="deposit">Submit</button>
+                    <button class="btn btn-success" id="deposit">Deposit</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -87,6 +87,8 @@
 
               updateSpanText("deposit-balance", deposit_amount);
               updateSpanText("total-balance", deposit_amount);
+
+              document.getElementById("deposit_input").value="";
           }
         )
 
@@ -97,7 +99,7 @@
             var total_balance = current_amount+deposit_amount;
 
             document.getElementById(id).innerText=total_balance;
-            document.getElementById("deposit_input").value="";
+           
         }
 
         withdraw_button.addEventListener("click", 
@@ -107,6 +109,8 @@
 
               updateSpanText("withdraw-balance", withdraw_amount);
               updateSpanText("total-balance", -1*withdraw_amount);
+
+              document.getElementById("withdraw_input").value="";
              
           }
         )

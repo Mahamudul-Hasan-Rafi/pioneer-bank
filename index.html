@@ -85,37 +85,29 @@
               const deposit_value = document.getElementById("deposit_input").value;
               var deposit_amount = parseFloat(deposit_value);
 
-              var dps = document.getElementById("deposit-balance").innerText;
-              var dps_amount = parseFloat(dps);
-
-              var tm = document.getElementById("total-balance").innerText;
-              var total_amount = parseFloat(tm);
-
-              var tot=deposit_amount+dps_amount;
-              var total_balance=total_amount+deposit_amount;
-
-              document.getElementById("deposit-balance").innerText=tot;
-              document.getElementById("deposit_input").value="";
-
-              document.getElementById("total-balance").innerText=total_balance;
+              updateSpanText("deposit-balance", deposit_amount);
+              updateSpanText("total-balance", deposit_amount);
           }
         )
+
+        function updateSpanText(id, deposit_amount){
+            var current = document.getElementById(id).innerText;
+            var current_amount = parseFloat(current);
+
+            var total_balance = current_amount+deposit_amount;
+
+            document.getElementById(id).innerText=total_balance;
+            document.getElementById("deposit_input").value="";
+        }
 
         withdraw_button.addEventListener("click", 
           function(){
               const withdraw_value = document.getElementById("withdraw_input").value;
               var withdraw_amount = parseFloat(withdraw_value);
 
-              //console.log(withdraw_amount);
-              var tm = document.getElementById("total-balance").innerText;
-              var total_amount = parseFloat(tm);
-
-              var remain=total_amount-withdraw_amount;
-
-              document.getElementById("withdraw-balance").innerText=withdraw_amount;
-              document.getElementById("withdraw_input").value="";
-
-              document.getElementById("total-balance").innerText=remain;
+              updateSpanText("withdraw-balance", withdraw_amount);
+              updateSpanText("total-balance", -1*withdraw_amount);
+             
           }
         )
 
